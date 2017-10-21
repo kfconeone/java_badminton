@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="badminton@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="badminton">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="court_info"/>
+    <table id="8" parent="2" name="error_info"/>
+    <table id="9" parent="2" name="gather_info"/>
+    <table id="10" parent="2" name="join_info"/>
+    <table id="11" parent="2" name="player_info"/>
+    <table id="12" parent="2" name="update_info"/>
+    <table id="13" parent="2" name="user"/>
+    <column id="14" parent="7" name="CourtName">
+      <Position>1</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="7" name="City">
+      <Position>2</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="7" name="Region">
+      <Position>3</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="7" name="Address">
+      <Position>4</Position>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <key id="18" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CourtName</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="19" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="8" name="OccurTime">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="8" name="Message">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="9" name="GatherId">
+      <Position>1</Position>
+      <DataType>char(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="AccountId">
+      <Position>2</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="TeamName">
+      <Position>3</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="TeamLeader">
+      <Position>4</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="9" name="City">
+      <Position>5</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="9" name="Region">
+      <Position>6</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="9" name="Court">
+      <Position>7</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="9" name="Price">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="9" name="Grade">
+      <Position>9</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="9" name="PlayersCount">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="9" name="PlayStartDateTime">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="9" name="PlayEndDateTime">
+      <Position>12</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="9" name="SubmitDateTime">
+      <Position>13</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="9" name="LineId">
+      <Position>14</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="9" name="Phone">
+      <Position>15</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="9" name="FacebookUrl">
+      <Position>16</Position>
+      <DataType>char(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="9" name="Information">
+      <Position>17</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="40" parent="9" name="FK_Gather_info_Player_Info">
+      <ColNames>AccountId</ColNames>
+    </index>
+    <key id="41" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>GatherId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="9" name="FK_Gather_info_Player_Info">
+      <ColNames>AccountId</ColNames>
+      <RefSchemaName>badminton</RefSchemaName>
+      <RefTableName>player_info</RefTableName>
+      <RefColNames>AccountId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="43" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="44" parent="10" name="GatherId">
+      <Position>2</Position>
+      <DataType>char(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="10" name="AccountId">
+      <Position>3</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="10" name="Information">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="47" parent="10" name="FK_Join_Info_Gather_Info">
+      <ColNames>GatherId</ColNames>
+    </index>
+    <index id="48" parent="10" name="FK_Join_Info_Player_Info">
+      <ColNames>AccountId</ColNames>
+    </index>
+    <key id="49" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="50" parent="10" name="FK_Join_Info_Gather_Info">
+      <ColNames>GatherId</ColNames>
+      <RefSchemaName>badminton</RefSchemaName>
+      <RefTableName>gather_info</RefTableName>
+      <RefColNames>GatherId</RefColNames>
+    </foreign-key>
+    <foreign-key id="51" parent="10" name="FK_Join_Info_Player_Info">
+      <ColNames>AccountId</ColNames>
+      <RefSchemaName>badminton</RefSchemaName>
+      <RefTableName>player_info</RefTableName>
+      <RefColNames>AccountId</RefColNames>
+    </foreign-key>
+    <column id="52" parent="11" name="AccountId">
+      <Position>1</Position>
+      <DataType>char(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="11" name="DeviceId">
+      <Position>2</Position>
+      <DataType>char(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="11" name="TeamTemplate">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="55" parent="11" name="TeamTemplateHistory">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="56" parent="11" name="City">
+      <Position>5</Position>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <column id="57" parent="11" name="RegisterDate">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="58" parent="11" name="DeviceId">
+      <ColNames>DeviceId</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AccountId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="60" parent="11" name="DeviceId">
+      <ColNames>DeviceId</ColNames>
+      <UnderlyingIndexName>DeviceId</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="12" name="court_flag">
+      <Position>1</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="62" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>court_flag</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="63" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="13" name="age">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="65" parent="13" name="create_date">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="66" parent="13" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="67" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
