@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PlayerInfoRepository extends CrudRepository<PlayerInfo,Long> {
     PlayerInfo findByDeviceId(String _deviceId);
+    PlayerInfo findByAccountId(String _accountId);
 }
