@@ -1,6 +1,7 @@
 package com.kfc.kfconeone.models;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "join_info", schema = "badminton", catalog = "")
@@ -9,6 +10,7 @@ public class JoinInfo {
     private String gatherId;
     private String accountId;
     private String information;
+    private Timestamp playDate;
 
     @Id
     @Column(name = "id")
@@ -73,5 +75,15 @@ public class JoinInfo {
         result = 31 * result + (accountId != null ? accountId.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "PlayDate")
+    public Timestamp getPlayDate() {
+        return playDate;
+    }
+
+    public void setPlayDate(Timestamp playDate) {
+        this.playDate = playDate;
     }
 }

@@ -6,13 +6,14 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/badminton</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <mapping class="com.kfc.kfconeone.models.CourtInfo"/>
+      <mapping class="com.kfc.kfconeone.models.CourtInfo"/>
     <mapping class="com.kfc.kfconeone.models.ErrorInfo"/>
     <mapping class="com.kfc.kfconeone.models.GatherInfo"/>
     <mapping class="com.kfc.kfconeone.models.JoinInfo"/>
     <mapping class="com.kfc.kfconeone.models.PlayerInfo"/>
     <mapping class="com.kfc.kfconeone.models.UpdateInfo"/>
-    <!-- <property name="connection.username"/> -->
+      <mapping class="com.kfc.kfconeone.models.User"/>
+      <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
