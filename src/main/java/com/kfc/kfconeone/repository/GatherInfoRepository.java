@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface GatherInfoRepository extends CrudRepository<GatherInfo,Long> {
     List<GatherInfo> findByAccountId(String _accountId);
+    List<GatherInfo> findByCity(String _city);
     GatherInfo findByGatherId(String _gatherId);
 }

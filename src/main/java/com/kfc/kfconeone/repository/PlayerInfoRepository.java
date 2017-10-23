@@ -4,6 +4,6 @@ import com.kfc.kfconeone.models.PlayerInfo;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PlayerInfoRepository extends CrudRepository<PlayerInfo,Long> {
-    PlayerInfo findByDeviceId(String _deviceId);
+    PlayerInfo findByUId(String _uid);
     PlayerInfo findByAccountId(String _accountId);
 }

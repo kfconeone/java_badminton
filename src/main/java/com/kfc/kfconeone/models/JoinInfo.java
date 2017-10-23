@@ -11,6 +11,8 @@ public class JoinInfo {
     private String accountId;
     private String information;
     private Timestamp playDate;
+    private String name;
+    private int confirm;
 
     @Id
     @Column(name = "id")
@@ -85,5 +87,25 @@ public class JoinInfo {
 
     public void setPlayDate(Timestamp playDate) {
         this.playDate = playDate;
+    }
+
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "Confirm")
+    public int getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(int confirm) {
+        this.confirm = confirm;
     }
 }
