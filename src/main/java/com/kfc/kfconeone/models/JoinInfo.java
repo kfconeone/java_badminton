@@ -13,6 +13,7 @@ public class JoinInfo {
     private Timestamp playDate;
     private String name;
     private int confirm;
+    private boolean isCancel;
 
     @Id
     @Column(name = "id")
@@ -109,4 +110,13 @@ public class JoinInfo {
         this.confirm = confirm;
     }
 
+    @Basic
+    @Column(name = "IsCancel")
+    public boolean isCancel() {
+        return isCancel;
+    }
+
+    public void setCancel(boolean cancel) {
+        isCancel = cancel;
+    }
 }

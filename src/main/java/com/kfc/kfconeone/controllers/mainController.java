@@ -156,5 +156,30 @@ public class mainController {
     }
 
 
+    @RequestMapping(path="/canceljoininfo",method = RequestMethod.POST)
+    public @ResponseBody
+    Map cancelJoinInfo (@RequestBody String _req) {
+
+        Map<String,Object> res = new HashMap<>();
+        try
+        {
+            Gson gson = new Gson();
+            JsonObject req = gson.fromJson(_req,JsonObject.class);
+            JoinInfo joinInfo = joinInfoRepository.findByGatherIdAndAccountId(req.get("gatherId").getAsString(),req.get("accountId").getAsString());
+            joinInfo.setCancel(true);
+            joinInfoRepository.save(joinInfo);
+
+            res.put("result","000 success");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            res.put("result","100 failed");
+        }
+
+        return res;
+    }
+
+
 
 }

@@ -253,4 +253,28 @@ public class GatherController {
         return res;
     }
 
+    @RequestMapping(path="/cancelgatherinfo",method = RequestMethod.POST)
+    public @ResponseBody
+    Map cancelGatherInfo (@RequestBody String _req) {
+
+        Map<String,Object> res = new HashMap<>();
+        try
+        {
+            Gson gson = new Gson();
+            JsonObject req = gson.fromJson(_req,JsonObject.class);
+            GatherInfo gatherInfo = gatherInfoRepository.findByGatherId(req.get("gatherId").getAsString());
+            gatherInfo.setCancel(true);
+            gatherInfoRepository.save(gatherInfo);
+
+            res.put("result","000 success");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            res.put("result","100 failed");
+        }
+
+        return res;
+    }
+
 }
