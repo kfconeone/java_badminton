@@ -108,4 +108,5 @@ public class JoinInfo {
     public void setConfirm(int confirm) {
         this.confirm = confirm;
     }
+
 }

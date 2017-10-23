@@ -21,18 +21,29 @@ import java.util.stream.Collectors;
 @Controller    // 說明這個class是Controller
 public class mainController {
 
-    @Autowired // 這標籤代表會取得自動產生的操作元件
+    //@Autowired // 這標籤代表會取得自動產生的操作元件
     private PlayerInfoRepository playerInfoRepository;
-    @Autowired
     private GatherInfoRepository gatherInfoRepository;
-    @Autowired
     private JoinInfoRepository joinInfoRepository;
+
+    @Autowired
+    public mainController(
+            PlayerInfoRepository _playerInfoRepository,
+            GatherInfoRepository _gatherInfoRepository,
+            JoinInfoRepository _joinInfoRepository
+    )
+    {
+        playerInfoRepository = _playerInfoRepository;
+        gatherInfoRepository = _gatherInfoRepository;
+        joinInfoRepository = _joinInfoRepository;
+    }
+
 
     @RequestMapping(path="/getaccount",method = RequestMethod.POST)
     public @ResponseBody
-    Map getaccount (@RequestBody Map _req) {
+    Map getAccount (@RequestBody Map _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             PlayerInfo player = playerInfoRepository.findByUId(_req.get("uid").toString());
@@ -76,7 +87,7 @@ public class mainController {
     public @ResponseBody
     Map setJoinInfo (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -120,7 +131,7 @@ public class mainController {
     public @ResponseBody
     Map getMyJoinInfo (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();

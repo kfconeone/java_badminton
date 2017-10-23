@@ -23,6 +23,7 @@ public class GatherInfo {
     private String phone;
     private String facebookUrl;
     private String information;
+    private boolean isCancel;
 
     @Id
     @Column(name = "GatherId")
@@ -245,5 +246,15 @@ public class GatherInfo {
         result = 31 * result + (facebookUrl != null ? facebookUrl.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IsCancel")
+    public boolean isCancel() {
+        return isCancel;
+    }
+
+    public void setCancel(boolean cancel) {
+        isCancel = cancel;
     }
 }

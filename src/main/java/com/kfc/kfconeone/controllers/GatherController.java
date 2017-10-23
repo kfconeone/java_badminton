@@ -26,19 +26,30 @@ import java.util.stream.Collectors;
 
 @Controller    // 說明這個class是Controller
 public class GatherController {
-    @Autowired // 這標籤代表會取得自動產生的操作元件
+    //@Autowired // 這標籤代表會取得自動產生的操作元件，但不推薦，建議在Constructor注入
     private PlayerInfoRepository playerInfoRepository;
-    @Autowired
     private GatherInfoRepository gatherInfoRepository;
-    @Autowired
     private JoinInfoRepository joinInfoRepository;
+
+
+    @Autowired  //Spring推薦用Constructor注入
+    public GatherController(
+            PlayerInfoRepository _playerInfoRepository,
+            GatherInfoRepository _gatherInfoRepository,
+            JoinInfoRepository _joinInfoRepository
+            )
+    {
+        playerInfoRepository = _playerInfoRepository;
+        gatherInfoRepository = _gatherInfoRepository;
+        joinInfoRepository = _joinInfoRepository;
+    }
 
 
     @RequestMapping(path="/setgatherinfo",method = RequestMethod.POST)
     public @ResponseBody
     Map setGatherInfo (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -99,7 +110,7 @@ public class GatherController {
     public @ResponseBody
     Map getMyGatherInfo (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -128,7 +139,7 @@ public class GatherController {
     public @ResponseBody
     Map getCityGatherInfo (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -157,7 +168,7 @@ public class GatherController {
     public @ResponseBody
     Map getGatherInfoByGatherId (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -183,7 +194,7 @@ public class GatherController {
     public @ResponseBody
     Map getMyGatherRequests (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -191,14 +202,15 @@ public class GatherController {
             List<String> myGatherIdList = gatherInfoRepository
                     .findByAccountId(req.get("accountId").getAsString())
                     .parallelStream()
-                    .map(tempInfo -> tempInfo.getGatherId())
+                    .map(GatherInfo::getGatherId)
                     .collect(Collectors.toList());
 
 
-            List<JoinInfo> joinInfos = new ArrayList();
+            List<JoinInfo> joinInfos = new ArrayList<>();
             myGatherIdList.forEach(tempId ->
                     {
-                        joinInfoRepository.findByGatherId(tempId).forEach(joinInfo -> joinInfos.add(joinInfo));
+                        //joinInfoRepository.findByGatherId(tempId).forEach(joinInfo -> joinInfos.add(joinInfo));
+                        joinInfos.addAll(joinInfoRepository.findByGatherId(tempId));
                     });
 
 
@@ -221,7 +233,7 @@ public class GatherController {
     public @ResponseBody
     Map confirmGatherRequests (@RequestBody String _req) {
 
-        Map res = new HashMap();
+        Map<String,Object> res = new HashMap<>();
         try
         {
             Gson gson = new Gson();
@@ -240,4 +252,5 @@ public class GatherController {
 
         return res;
     }
+
 }
